@@ -1,6 +1,12 @@
 with source as (
 
-    select * from {{ source('tpch', 'orders') }}
+    select *
+
+        {% if target.name == 'qa' %}
+        from {{ source('tpch_qa', 'orders') }}
+        {% else %}
+        from {{ source('tpch', 'orders') }}
+        {% endif %}
 
 ),
 
@@ -23,3 +29,6 @@ renamed as (
 )
 
 select * from renamed
+
+-- How to use different sources depending on the environment
+-- https://discourse.getdbt.com/t/how-do-i-specify-a-different-schema-for-my-source-at-run-time/561/2
