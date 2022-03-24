@@ -47,5 +47,5 @@ sources:
     database: raw
     schema: tpch_sf001
     tables:
-      - name: orders
+      - name: orders_qa
       
