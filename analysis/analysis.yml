@@ -1,0 +1,7 @@
+version: 2
+
+analyses:
+    - name: test
+      description: you can document your analysis as well! 
+      docs:
+        show: true
