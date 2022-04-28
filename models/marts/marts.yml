@@ -1,0 +1,15 @@
+version: 2
+
+models:
+ - name: order_items
+
+metrics:
+  - name: discounted_item_sales_amount
+    label: Discounted Item Sales Amount
+    model: ref('order_items')
+    description: "The total discounted price per item in gross"
+
+    type: count
+    sql: order
+
+    
