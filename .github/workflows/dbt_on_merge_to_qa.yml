@@ -6,8 +6,8 @@ on:
       - qa
 
 jobs:
-  run_dbt_on_merge_to_master:
-    name: dbt Production Run on Push to Main
+  run_dbt_on_merge_to_qa:
+    name: dbt QA Run on Push to QA
     runs-on: ubuntu-latest
 
     env:
