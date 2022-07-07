@@ -36,7 +36,6 @@ renamed as (
         l_comment as comment
 
     from source
-
 )
 
 select * from renamed
