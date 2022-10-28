@@ -1,0 +1,36 @@
+version: 2
+
+metrics:
+  - name: quantity
+    label: Quantity
+    model: ref('order_items')
+    description: "total quantity of units purchased"
+
+    calculation_method: sum
+    expression: quantity
+
+    timestamp: order_date
+    time_grains: [day, week, month, year]
+
+    dimensions:
+      - customer_key
+      - order_status_code
+
+    # window: used to set an aggregated rolling window (no more need to write window functions)
+
+    # filters: provide a list of filters to apply before calcuting the metrics 
+
+    #config: additional configs like treating null values as zero
+
+    #meta: additional fields for auditing, owernships.
+
+  - name: total_revenue
+    label: Total Revenue
+    model: ref('order_items')
+    description: "The total revenue"
+
+    calculation_method: sum
+    expression: net_item_sales_amount
+
+    timestamp: order_date
+    time_grains: [day, week, month, year]

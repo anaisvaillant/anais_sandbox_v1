@@ -1,3 +1,4 @@
+
 with orders as (
     
     select * from {{ ref('stg_tpch_orders') }}
@@ -9,7 +10,6 @@ line_item as (
     select * from {{ ref('stg_tpch_line_item') }}
 
 )
-
 select 
 
     line_item.order_item_key,
@@ -32,18 +32,18 @@ select
     line_item.extended_price,
     line_item.quantity,
     
-    
-    (line_item.extended_price/nullif(line_item.quantity,0)){{ money() }} as base_price,
+    -- extended_price is actually the line item total,
+    -- so we back out the extended price per item
+    (line_item.extended_price/nullif(line_item.quantity, 0)){{ money() }} as base_price,
     line_item.discount_percentage,
     (base_price * (1 - line_item.discount_percentage)){{ money() }} as discounted_price,
 
     line_item.extended_price as gross_item_sales_amount,
     (line_item.extended_price * (1 - line_item.discount_percentage)){{ money() }} as discounted_item_sales_amount,
-    
+    -- We model discounts as negative amounts
     (-1 * line_item.extended_price * line_item.discount_percentage){{ money() }} as item_discount_amount,
     line_item.tax_rate,
     ((gross_item_sales_amount + item_discount_amount) * line_item.tax_rate){{ money() }} as item_tax_amount,
-    
     (
         gross_item_sales_amount + 
         item_discount_amount + 
