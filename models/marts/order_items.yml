@@ -5,6 +5,20 @@ models:
     description: Intermediate model where we calculate item price, discounts and tax. This model is at the order item level.
     tags:
       - output_table_type|orders
+    tests:
+      - dbt_datamocktool.unit_test:
+          input_mapping:
+            ref('stg_tpch_line_item'): ref('line_item__mock_data__input') # this is a seed
+          expected_output: ref('order_items__mock_data__output') # this is also a seed
+          depends_on:
+            - ref('stg_tpch_line_item')
+            - ref('stg_tpch_orders')
+          compare_columns:
+            - order_item_key
+            - discounted_price
+            - gross_item_sales_amount
+          name: example_unit_test
+          description: this is how we create a unit test with dbt_datamocktool
     columns:
      - name: order_item_key
        tests:
