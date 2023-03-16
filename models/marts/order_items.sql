@@ -56,4 +56,5 @@ select
     orders
 inner join line_item
         on orders.order_key = line_item.order_key
-order by 1 asc
+order by
+    orders.order_date
