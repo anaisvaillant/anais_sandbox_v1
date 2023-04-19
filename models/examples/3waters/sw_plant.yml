@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: recipe
+    description: example of json parsing
+    database: analytics
+    schema: dbt_lbondkennedy
+    tables:
+      - name: raw_recipe

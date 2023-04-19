@@ -1,0 +1,10 @@
+version: 2
+
+
+sources:
+  - name: reviews
+    description: example of json parsing
+    database: analytics
+    schema: dbt_lbondkennedy
+    tables:
+      - name: json_reviews
