@@ -37,5 +37,6 @@ models:
     example:
       materialized: view
 
+seeds:
+    +quote_columns: true
 on-run-end: "{{ log_results(results) }}"
-
