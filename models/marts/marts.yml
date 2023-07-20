@@ -6,6 +6,7 @@ models:
     tags:
       - output_table_type|orders
     tests:
+      - elementary.schema_changes
       - dbt_datamocktool.unit_test:
           input_mapping:
             ref('stg_tpch_line_item'): ref('line_item__mock_data__input') # this is a seed
