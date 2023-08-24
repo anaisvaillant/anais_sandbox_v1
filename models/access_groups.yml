@@ -1,0 +1,6 @@
+version: 2
+
+groups:
+  - name: hub
+    owner:
+      email: hub.maintainers@org.com

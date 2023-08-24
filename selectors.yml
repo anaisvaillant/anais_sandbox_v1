@@ -1,0 +1,13 @@
+selectors:
+  - name: snowflake_hub
+    description: >
+        Only resources from the current project and excluding demo examples.
+        Excludes resources defined in installed packages, including upstream dbt projects!
+    default: true
+    definition:
+      intersection:
+        - method: package
+          value: snowflake_hub
+        - exclude:
+            - 'package:dbt_project_evaluator'
+            - 'examples'
