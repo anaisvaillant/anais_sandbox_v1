@@ -1,6 +1,81 @@
 version: 2
 
 models:
+  - name: fct_orders
+    description: orders fact table
+    columns:
+      - name: gross_item_sales_amount
+        data_type: numeric
+        tests:
+          - orders__assert_positive_price
+      - name: order_key
+        data_type: int
+        description: primary key of the model
+        tests:
+          - not_null
+      - name: customer_key
+        data_type: int
+        description: foreign key for customers
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_key
+              severity: error
+      - name: order_date
+        data_type: date
+        description: date of the order
+      - name: status_code
+        data_type: text
+        description: status of the order
+      - name: priority_code
+        data_type: text
+        description: code associated with the order
+      - name: clerk_name
+        data_type: text
+        description: id of the clerk
+      - name: ship_priority
+        data_type: numeric
+        description: numeric representation of the shipping priority, zero being the default
+      - name: order_count
+        data_type: int
+        description: number of orders (includes returns)
+      - name: return_count
+        data_type: int
+        description: How many line items have the return flag in this order?
+      - name: total_price
+        data_type: numeric
+        description: aggregated price for the order as a whole
+      - name: gross_item_sales_amount
+        data_type: numeric
+        description: '{{ doc("gross_item_sales_amount") }}'
+      - name: item_discount_amount
+        data_type: numeric
+        description: '{{ doc("item_discount_amount") }}'
+      - name: item_tax_amount
+        data_type: numeric
+        description: '{{ doc("item_tax_amount") }}'
+      - name: net_item_sales_amount
+        data_type: numeric
+        description: '{{ doc("net_item_sales_amount") }}'
+      - name: region
+        data_type: text
+        description: customer region from dim_customers
+    
+     
+    # this is a public model - intended for consumption in other dbt Cloud projects
+    # because it's public, we agree to a set of standards in its contract.
+    access: public
+    config:
+      contract:
+        enforced: true
+    latest_version: 0
+    versions:
+      - v: 0
+      - v: 1
+        columns:
+          - include: all
+            exclude: [total_price]
+    
   - name: order_items
     description: Intermediate model where we calculate item price, discounts and tax. This model is at the order item level.
     tags:
@@ -26,3 +101,90 @@ models:
         - unique
         - not_null
             
+  - name: dim_customers
+    description: Customer dimensions table
+    access: public
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: customer_key
+        data_type: int
+        description: Primary key on the customers table
+        tests:
+          - unique
+          - not_null
+      - name: region
+        data_type: text
+        description: region name
+        tests:
+          - accepted_values:
+              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
+              severity: warn
+      - name: name
+        data_type: text
+        description: customer id
+      - name: address
+        data_type: text
+        description: address of the customer
+      - name: nation
+        data_type: text
+        description: nation name
+      - name: phone_number
+        data_type: text
+        description: phone number of the customer
+      - name: account_balance
+        data_type: numeric
+        description: '{{ doc("account_balance") }}'
+      - name: market_segment
+        data_type: text
+        description: market segment of the customer
+
+  # this is a private model - it's intended for use within the 'customer360' group only
+  - name: dim_parts
+    access: private
+    description: Parts dimensions table
+    columns:
+      - name: part_key
+        description: primary key of the model
+        tests:
+          - unique
+          - not_null
+      - name: manufacturer
+        description: manufacturer of the part
+      - name: name
+        description: name of the part
+      - name: brand
+        description: brand of the part
+      - name: type
+        description: type of part including material
+      - name: size
+        description: size of the part
+      - name: container
+        description: container of the part
+      - name: retail_price
+        description: '{{ doc("retail_price") }}'
+
+  # this is a protected model - it's intended for use in **this** dbt project only, but hidden from other projects
+  - name: dim_suppliers
+    access: protected
+    description: Suppliers dimensions table
+    columns:
+      - name: supplier_key
+        description: primary key of the model
+        tests:
+          - unique
+          - not_null
+      - name: supplier_name
+        description: '{{ doc("supplier_name") }}'
+      - name: supplier_address
+        description: '{{ doc("supplier_address") }}'
+      - name: nation
+        description: nation name
+      - name: region
+        description: region name
+      - name: phone_number
+        description: '{{ doc("phone_number") }}'
+      - name: account_balance
+        description: '{{ doc("account_balance") }}'
+ 
