@@ -23,4 +23,5 @@ final as (
         part
 )
 select * from final  
-order by part_key
+
+
