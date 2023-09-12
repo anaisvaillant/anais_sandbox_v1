@@ -9,4 +9,4 @@ packages:
     version: 0.3.6
   - package: elementary-data/elementary
     version: 0.8.4
-  - git: https://github.com/anaisvaillant/client_example_package.git
+  - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/anaisvaillant/client_example_package.git"
