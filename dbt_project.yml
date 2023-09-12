@@ -8,7 +8,7 @@ version: '1.0.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'snowflake_hub'
+#profile: 'snowflake_hub'
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
@@ -44,4 +44,13 @@ models:
         +required_tests:
           "unique": 1
           "not_null": 1
+    examples:
+      custom_schema:
+        +schema: custom_schema
+        +materialized: table
+  dbt_utils:
+    +docs:
+      show: false
+
+  
 
