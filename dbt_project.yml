@@ -2,13 +2,9 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'snowflake_hub'
+name: 'anais_sandbox'
 version: '1.0.0'
-#require-dbt-version: '>=1.3.0'
 config-version: 2
-
-# This setting configures which "profile" dbt uses for this project.
-profile: 'snowflake_hub'
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
@@ -35,13 +31,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   elementary:
     +schema: "elementary"
-  snowflake_hub:
-    marts:
-      +group: hub
-      #+required_tests: {"unique|not_null": 2}
-      core:
-        +required_docs: true
-        +required_tests:
-          "unique": 1
-          "not_null": 1
+  anais_sandbox:
+
 
