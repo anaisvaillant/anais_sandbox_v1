@@ -1,0 +1,25 @@
+version: 2
+version: 2
+
+metrics:
+  - name: total_revenue
+    description: The total revenue for the business
+    type: simple
+    label: Total Revenue
+    type_params:
+      measure: total_revenue
+
+  - name: cumulative_revenue_total
+    description: The cumulative revenue for the business
+    type: cumulative
+    label: Cumulative Revenue (All-Time)
+    type_params:
+      measure: total_revenue
+    
+  - name: cumulative_revenue_ttm
+    description: Cumulative revenue for the trailing twelve months
+    type: cumulative
+    label: Cumulative Revenue (TTM)
+    type_params:
+      measure: total_revenue
+      window: 12 months
