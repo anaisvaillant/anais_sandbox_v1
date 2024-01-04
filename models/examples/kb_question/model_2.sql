@@ -1,4 +1,4 @@
 select *
---, 'new_column' as new_column
+, 'new_column' as new_column
 
  from {{ ref('model_1') }}
