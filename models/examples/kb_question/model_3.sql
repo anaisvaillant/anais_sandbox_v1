@@ -1,1 +1,2 @@
-select * from {{ ref('model_2') }}
+select * 
+from {{ ref('model_2') }}
