@@ -6,7 +6,12 @@
    
 with source as (
 
-    select * from {{ source('tpch', 'lineitem') }}
+    select * 
+    {% if target.name == 'ci'%}
+    from {{ ref('line_item__mock') }}
+    {% else %}
+    from {{ source('tpch', 'lineitem') }}
+    {% endif %}
 
 ),
 
@@ -32,8 +37,8 @@ renamed as (
         l_commitdate as commit_date,
         l_receiptdate as receipt_date,
         l_shipinstruct as ship_instructions,
-        l_shipmode as ship_mode,
-        l_comment as comment
+        l_shipmode as ship_mode
+        --l_comment as comment
 
     from source
 )
