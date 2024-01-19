@@ -6,7 +6,13 @@
    
 with source as (
 
-    select * from {{ source('tpch', 'lineitem') }}
+    select * 
+    {% if target.name == 'ci' %}
+    from {{ ref('line_item__mock') }}
+    {% else %}
+    from {{ source('tpch', 'lineitem') }}
+    {% endif %}
+    
 
 ),
 
