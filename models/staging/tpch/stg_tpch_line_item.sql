@@ -8,7 +8,7 @@ with source as (
 
     select * 
     {% if target.name == 'ci'%}
-    from {{ ref('line_item__mock_data__input') }}
+    from {{ ref('line_item__mock') }}
     {% else %}
     from {{ source('tpch', 'lineitem') }}
     {% endif %}
