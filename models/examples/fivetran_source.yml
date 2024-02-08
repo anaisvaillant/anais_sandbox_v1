@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: google_sheets
+    description: jaffle shop info on store locations
+    database: fivetran_database
+    schema: google_sheets
+    loader: fivetran
+    tables:
+      - name: jaffle_shop_locations
