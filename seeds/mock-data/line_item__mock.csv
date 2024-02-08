@@ -1,0 +1,13 @@
+l_orderkey,l_partkey,l_suppkey,l_linenumber,l_quantity,l_extendedprice,l_discount,l_tax,l_returnflag,l_linestatus,l_shipdate,l_commitdate,l_receiptdate,l_shipinstruct,l_shipmode,l_comment
+37316,1748,75,1,33,54441,0,0,N,O,35044,34984,35067,COLLECT COD,AIR,tes integra
+41537,1984,29,6,4,7544,0,0,N,O,35491,35418,35516,COLLECT COD,MAIL,ding warthogs use quick
+24964,409,10,1,50,65470,0,0,A,F,34747,34783,34777,TAKE BACK RETURN,AIR,after the even depe
+36387,584,45,6,50,74229,0,0,N,O,35067,35071,35089,DELIVER IN PERSON,SHIP,iet deposits hag
+2530,1079,15,3,8,7841,0,0,A,F,34456,34462,34478,DELIVER IN PERSON,MAIL,ial asymptotes snooze slyly regular
+38918,1962,95,1,48,89470,0,0,N,O,35610,35595,35636,COLLECT COD,MAIL,bold accounts. blithely unusual theo
+21382,1674,16,6,43,67754,0,0,A,F,33632,33673,33657,DELIVER IN PERSON,REG AIR,efully stealthy requests. fina
+28326,836,70,4,40,69473,0,0,N,O,36026,36027,36037,NONE,MAIL,yly special instructions across t
+14144,827,28,1,29,50107,0,0,N,O,35660,35609,35663,DELIVER IN PERSON,SHIP,ed asymptotes cajole fluffil
+13122,1095,31,1,42,41836,0,0,A,F,34622,34666,34644,DELIVER IN PERSON,AIR,s the final
+36263,311,68,5,34,41185,0,0,N,O,35885,35909,35910,DELIVER IN PERSON,TRUCK,ng the dugouts. quickly final depos
+38,1759,44,1,44,73073,0,0,N,O,35337,35386,35338,COLLECT COD,MAIL,s. blithely unusual theodolites am
