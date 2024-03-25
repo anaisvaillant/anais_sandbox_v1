@@ -31,8 +31,7 @@ final as (
         region.name as region,
         customer.phone_number,
         customer.account_balance,
-        customer.market_segment,
-        'hello world' as new_col
+        customer.market_segment
     from
         customer
         inner join nation
