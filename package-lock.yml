@@ -1,16 +1,26 @@
 packages:
-  - package: dbt-labs/dbt_utils
+  - name: dbt_utils
+    package: dbt-labs/dbt_utils
     version: 0.9.6
-  - package: mjirv/dbt_datamocktool
+  - name: dbt_datamocktool
+    package: mjirv/dbt_datamocktool
     version: 0.3.0
-  - package: calogica/dbt_expectations
+  - name: dbt_expectations
+    package: calogica/dbt_expectations
     version: 0.8.5
-  - package: tnightengale/dbt_meta_testing
+  - name: dbt_meta_testing
+    package: tnightengale/dbt_meta_testing
     version: 0.3.6
-  - package: dbt-labs/codegen
+  - name: codegen
+    package: dbt-labs/codegen
     version: 0.11.0
-  - package: dbt-labs/audit_helper
+  - name: elementary
+    package: elementary-data/elementary
+    version: 0.8.4
+  - name: audit_helper
+    package: dbt-labs/audit_helper
     version: 0.7.0
-  - package: calogica/dbt_date
+  - name: dbt_date
+    package: calogica/dbt_date
     version: 0.7.2
-sha1_hash: a11a8550bd0df642b852aeb7f128cb550cb97d2a
+sha1_hash: 53543d0e2a63eaeff69f974a4f5ffd705c7567d3
