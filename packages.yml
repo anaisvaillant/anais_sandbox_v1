@@ -1,6 +1,8 @@
 packages:
   - package: dbt-labs/dbt_utils
-    version: 0.9.6
+    version: 1.2.0
+  - package: dbt-labs/audit_helper 
+    version: 0.12.0  
   - package: mjirv/dbt_datamocktool
     version: 0.3.0
   - package: calogica/dbt_expectations
@@ -10,6 +12,7 @@ packages:
   - package: dbt-labs/codegen
     version: 0.11.0    
   - package: elementary-data/elementary
-    version: 0.8.4    
+    version: 0.8.4
+
 
     
