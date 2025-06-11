@@ -18,10 +18,7 @@ select
     line_item.supplier_key,
     orders.order_date,
     orders.status_code as order_status_code,
-    
-    
     line_item.return_flag,
-    
     line_item.line_number,
     line_item.status_code as order_item_status_code,
     line_item.ship_date,
@@ -47,7 +44,8 @@ select
         gross_item_sales_amount + 
         item_discount_amount + 
         item_tax_amount
-    ) as net_item_sales_amount
+    ) as net_item_sales_amount, 
+    'new_column'as new_column
 
     from
     orders
