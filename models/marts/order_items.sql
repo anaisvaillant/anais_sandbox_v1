@@ -44,8 +44,7 @@ select
         gross_item_sales_amount + 
         item_discount_amount + 
         item_tax_amount
-    ) as net_item_sales_amount, 
-    'new_column'as new_column
+    ) as net_item_sales_amount
 
     from
     orders
